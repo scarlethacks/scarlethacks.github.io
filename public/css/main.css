@@ -1,0 +1,43 @@
+html {
+	background: rgba(245, 245, 245, 1.0);
+}
+
+body, button, .content, .control, .vex-content {
+	font-family: 'PT Sans', sans-serif !important;
+}
+
+.title {
+	font-family: 'Nunito Sans', sans-serif !important;
+}
+
+.splash-full {
+	height: 60vh;
+}
+
+.panel-dark {
+	background: rgba(219, 65, 86, 1.0);
+}
+
+.panel-light {
+	background: rgba(255, 255, 255, 1.0);
+}
+
+.panel-dark .title, .panel-dark .subtitle, .panel-dark .content {
+	color: white !important;
+}
+
+.vex.vex-theme-plain .vex-dialog-button.vex-dialog-button-primary {
+	background: rgba(219, 65, 86, 1.0);
+}
+
+button.is-primary {
+	background: rgba(219, 65, 86, 1.0) !important;
+}
+
+button.is-primary:hover {
+	opacity: 0.5;
+}
+
+input:focus {
+	border-color: rgba(200, 200, 200, 1.0) !important;
+}

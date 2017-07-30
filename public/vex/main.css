@@ -1,0 +1,58 @@
+html, body {
+	padding: 0;
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+}
+
+#map {
+	display: block;
+	margin: 0 auto;
+	width: 100vw;
+	height: 80vh;
+}
+
+.controls {
+	padding-top: 15px;
+	display: block;
+	margin: 0 auto;
+	width: 500px;
+	text-align: center;
+}
+
+.controls h1, .controls p, .btn, .controls label, .controls input {
+	margin: 5px;
+}
+
+.controls h1, .controls p {
+	margin-bottom: 10px;
+}
+
+.controls label {
+    font-weight: bold;
+}
+
+.btn {
+    padding: 10px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    outline: none;
+    height: 30px;
+    font-size: 12px;
+    line-height: 0px;
+    background: white;
+    font-weight: bold;
+}
+
+.btn:hover {
+	cursor: pointer;
+	background: black;
+	color: white;
+}
+
+#shortcuts-list {
+	display: none;
+}
+
+.bold {
+	font-weight: bold;
+}

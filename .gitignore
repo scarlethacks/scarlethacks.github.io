@@ -1,3 +1,13 @@
+*.DS_Store
+
+# ignore extra save files for blender
+*.blend?
+*.blend??
+
+
+# Created by https://www.gitignore.io/api/node
+
+### Node ###
 # Logs
 logs
 *.log
@@ -54,6 +64,14 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
+# Yarn Lock file
+yarn.lock
+
+# package.json Lock file
+package-lock.json
+
 # dotenv environment variables file
 .env
 
+
+# End of https://www.gitignore.io/api/node
