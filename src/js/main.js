@@ -1,7 +1,11 @@
+import {database} from './database';
+
 console.log('Welcome to ScarletHacks.');
 
 let signupEmail = document.getElementById('signup-email');
 let signupButton = document.getElementById('signup-submit');
+
+console.log(database);
 
 let postSignupEmail = (email) => {
 	return new Promise((resolve, reject) => {

@@ -4,6 +4,8 @@
 *.blend?
 *.blend??
 
+# Firebase Files
+src/js/config.js
 
 # Created by https://www.gitignore.io/api/node
 
