@@ -1,11 +1,18 @@
-import {database} from './database';
+import {config} from './config';
+import {Database} from './database';
 
+let firebase = require('firebase');
+window.firebase = firebase;
+let prometheusjs = require('prometheusjs');
+
+let database = Database(firebase, config);
+
+console.log(config);
+console.log(database);
 console.log('Welcome to ScarletHacks.');
 
 let signupEmail = document.getElementById('signup-email');
 let signupButton = document.getElementById('signup-submit');
-
-console.log(database);
 
 let postSignupEmail = (email) => {
 	return new Promise((resolve, reject) => {
