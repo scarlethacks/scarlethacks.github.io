@@ -7,16 +7,11 @@ let prometheusjs = require('prometheusjs');
 
 let database = Database(firebase, config);
 
-database.init().then((user) => {
-	main(user);
-}).catch((err) => {
-	vex.dialog.alert(err);
-});
+database.init(main);
 
-let main = (user) => {
+function main(user) {
 
 	console.log('Welcome to ScarletHacks.');
-	console.log(user);
 
 	let prometheus = database.getPrometheus();
 
@@ -27,13 +22,15 @@ let main = (user) => {
 		return new Promise((resolve, reject) => {
 			console.log(`Email: ${email}`);
 			if (email) {
-				if (email.indexOf('@') > -1) {
+				let isEmail = email.indexOf('@') > -1;
+				let isEdu = email.indexOf('.edu') > -1;
+				if (isEmail && isEdu) {
 					database.saveSignupEmail(email).then(resolve).catch(reject);
 				} else {
-					reject('Please enter a valid email address.');
+					reject('Please enter a valid .edu email address.');
 				}
 			} else {
-				reject('Please enter a valid email address.');
+				reject('Please enter a valid .edu email address.');
 			}
 		});
 	}
@@ -46,7 +43,7 @@ let main = (user) => {
 			vex.dialog.alert(`We'll let you know when ScarletHacks applications are out!`);
 		}).catch((err) => {
 			signupButton.classList.remove('is-loading');
-			let errMessage = `Something went wrong: ${err}`;
+			let errMessage = err + '';
 			vex.dialog.alert(errMessage);
 		});
 	}

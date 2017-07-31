@@ -4,23 +4,20 @@ let Database = (firebase, config) => {
 	config.localhost = false;
 	let prometheus = Prometheus(config);
 	let db = ScarletHacksFirebase.database();
+	let auth = ScarletHacksFirebase.auth();
 
 	let database = {
 
-		init: () => {
-			return new Promise((resolve, reject) => {
-				firebase.auth().signInAnonymously().catch((err) => {
-					console.error(err.code, err.message);
-					reject(err);
-				});
-				firebase.auth().onAuthStateChanged((user) => {
-					if (user) {
-						prometheus.logon(user.uid);
-						resolve(user);
-					} else {
-						console.log('User is signed out.');
-					}
-				});
+		initialized: false,
+		
+		init: (callback) => {
+			auth.signInAnonymously().then((done) => {
+				let user = database.getCurrentUser();
+				prometheus.logon(user.uid);
+				callback(user);
+			}).catch((err) => {
+				console.error(err.code, err.message);
+				reject(err);
 			});
 		},
 
@@ -28,10 +25,16 @@ let Database = (firebase, config) => {
 			return prometheus;
 		},
 
+		getCurrentUser: () => {
+			return auth.currentUser;
+		},
+
 		saveSignupEmail: (email) => {
-			return db.ref('email-signups').push({
+			let uid = firebase.auth().currentUser.uid;
+			return db.ref(`email-signups`).push({
 				email: email,
-				timestamp: Date.now()
+				timestamp: Date.now(),
+				uid: database.getCurrentUser().uid
 			});
 		}
 
