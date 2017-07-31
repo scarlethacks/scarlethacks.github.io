@@ -1,7 +1,7 @@
 let Database = (firebase, config) => {
 
 	let ScarletHacksFirebase = firebase.initializeApp(config, 'ScarletHacks Database');
-	config.localhost = false;
+	config.localhost = true;
 	let prometheus = Prometheus(config);
 	let db = ScarletHacksFirebase.database();
 	let auth = ScarletHacksFirebase.auth();
@@ -31,6 +31,10 @@ let Database = (firebase, config) => {
 
 		saveSignupEmail: (email) => {
 			let uid = firebase.auth().currentUser.uid;
+			prometheus.save({
+				type: 'SIGNUP_EMAIL',
+				email: email
+			});
 			return db.ref(`email-signups`).push({
 				email: email,
 				timestamp: Date.now(),
