@@ -1,11 +1,7 @@
 import {config} from './config';
 import {Database} from './database';
 
-let firebase = require('firebase');
-window.firebase = firebase;
-let prometheusjs = require('prometheusjs');
-
-let database = Database(firebase, config);
+let database = Database(config);
 
 database.init(main);
 
