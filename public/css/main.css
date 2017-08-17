@@ -18,6 +18,10 @@ html {
 	color: white !important;
 }
 
+.inverted {
+	color: white !important;
+}
+
 .vex.vex-theme-plain .vex-dialog-button.vex-dialog-button-primary {
 	background: rgba(219, 65, 86, 1.0);
 }

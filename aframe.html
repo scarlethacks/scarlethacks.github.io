@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ScarletHacks</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="keywords" content="scarlet hacks, illinois institute of technology, hackathon">
+		<meta name="description" content="The Illinois Institute of Technology's Premier Intercollegiate Hackathon.">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<meta property="og:title" content="ScarletHacks">
+		<meta property="og:description" content="The Illinois Institute of Technology's Premier Intercollegiate Hackathon.">
+		<!--<meta property="og:image" content="...">-->
+		<!--<meta property="fb:app_id" content="...">-->
+
+		<link rel="icon" sizes="192x192" href="./public/img/logo.png">
+		<!--<link rel="image_src" href="...">-->
+		<!--<link rel="manifest" href="./manifest.webapp">-->
+
+		<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+		<script type="text/javascript" src="./src/js/aframe-effects.min.js"></script>
+
+		<script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
+		<script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.4/dist/aframe-extras.min.js"></script>
+
+		<script type="text/javascript" src="./public/vex/vex.combined.min.js"></script>
+		<script type="text/javascript">vex.defaultOptions.className = 'vex-theme-plain';</script>
+		<link rel="stylesheet" type="text/css" href="./public/vex/vex.css">
+		<link rel="stylesheet" type="text/css" href="./public/vex/vex-theme-plain.css">
+		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,900|PT+Sans:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.0/css/bulma.min.css">-->
+		<link rel="stylesheet" href="./public/css/styles.css">
+		<link rel="stylesheet" href="./public/css/main.css">
+		<style type="text/css">
+			
+			.scene-container {
+				/*filter: grayscale(10%);*/
+			}
+
+			.body-cover {
+				position: fixed;
+				z-index: 100;
+				width: 100%;
+			}
+
+			.top {
+				top: 10vh;
+			}
+
+			.bottom {
+				bottom: 10vh;
+			}
+
+			.highlight-container {
+				margin: 150px auto;
+				background: rgba(150, 29, 18, 0.85);
+				width: 250px;
+				height: 250px;
+			}
+
+			/* #DB4156 */
+
+		</style>
+	</head>
+	<body>
+
+		<script type="script-effect" id="customFilter" data-defaults="tDiffuse 0.3 0.3 1." data-diffuse>
+			void $main(inout vec4 c, vec4 o, vec2 uv, float d){
+				float t = time * mix(1., 1000., abs(sin(time * 10. + uv.x)));
+				uv = vec2(uv.x + resolution.z * sin(t * c.r + c.b), uv.y - resolution.w * cos(t * c.b + c.r));
+				c.rgb += smoothstep(0.3, 0.9, texture2D($0,uv).rgb  ) * mix( $1, $2, abs(sin(time * $3))) ;
+			}
+		</script>
+
+		<script type="script-effect" id="blendOutline" data-diffuse>
+			void $main(inout vec4 c, vec4 o, vec2 uv, float d){
+				c.rgb = mix(c.rgb, o.rgb, smoothstep(0.1,0.3,o.a));
+			}
+		</script>
+
+		<script type="script-effect" id="add" data-defaults="bloom_texture bloom_intensity" data-diffuse>
+			void $main(inout vec4 c, vec4 o, vec2 uv, float d){
+				c.rgb += pow(texture2D($0, uv).rgb,vec3(2.)) * $1;
+			}
+		</script>
+
+		<div class="scene-container">
+			<a-scene id="scene" antialias="false" effects=" colors, outline.sobel?, #blendOutline, bloom, film,  godrays, glitch,  fxaa" film="sIntensity: 0.03; nIntensity: 0.2"  outline="enabled: false; width: 1.33 1.33; range: 0 10; strength: 3; smooth: true;"  colors="mode:hqprtom; mul: 0.66 0.5 0.66; pow: 1 1.33 1.66; quant: 0.3 0.3 0.1; orig: 0.33 0.66 0.66" bloom="filter: bloom!, bloom.filter, #customFilter(bloom_texture 0.3 0.6 0.5); strength: 0.5; radius:1.2" fxaa="true" godrays="src: #sun; threshold: 0. 0.33; intensity: 2" glitch="true">
+				<a-assets>
+					<a-asset-item id="mtl-crown" src="./public/obj/crown.mtl"></a-asset-item>
+					<a-asset-item id="obj-crown" src="./public/obj/crown.obj"></a-asset-item>
+				</a-assets>
+				<a-entity light="type: ambient; color: #CB2B1D"></a-entity>
+				<a-entity position="60 5 45" camera universal-controls></a-entity>
+				<a-entity obj-model="obj: #obj-crown; mtl: #mtl-crown;" position="0 -10 0" scale="1 1 1"></a-entity> <!-- mtl: #mtl-crown; -->
+				<a-plane position="0 0 0" rotation="-90 0 0" width="400" height="400" color="#454545"></a-plane>
+				<a-sky color="#CB2B1D"></a-sky>
+			</a-scene>
+		</div>
+		<div class="body-cover top">
+			<section class="section">
+				<div class="container has-text-centered">
+					<h1 class="title is-1 inverted">Scarlet<wbr>Hacks</h1>
+					<p class="subtitle is-5 inverted">The Illinois Institute of Technology's Premier Intercollegiate Hackathon.</p>
+				</div>
+			</section>
+		</div>
+		<div class="body-cover bottom">
+			<section class="section">
+				<div class="container has-text-centered">
+					<p class="subtitle is-5 inverted">November 11<sup>th</sup>-12<sup>th</sup></p>
+					<button class="button is-primary is-outlined is-inverted is-large">Apply</button>
+				</div>
+			</section>
+		</div>
+		<a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:3%;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2018/events?utm_source=na-2018&utm_medium=TrustBadge&utm_campaign=na-2018&utm_content=black" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2018/black.svg" alt="Major League Hacking 2017 Hackathon Season" style="width:100%"></a>
+		<script type="text/javascript">
+			
+			var scene = document.getElementById('scene');
+
+			function glitch(on) {
+				scene.setAttribute('glitch', on);
+			}
+
+			runGlitch([3000, 7000]);
+
+			function runGlitch(offset) {
+				glitch(false);
+				setTimeout(function() {
+					glitch(true);
+					setTimeout(function() {
+						runGlitch(offset);
+					}, 500);
+				}, ((offset[1] - offset[0]) * Math.random()) + offset[0]);
+			}
+
+
+		</script>
+	</body>
+</html>
