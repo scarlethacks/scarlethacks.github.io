@@ -6,6 +6,10 @@ html {
 	font-family: 'Nunito Sans', sans-serif !important;
 }
 
+p, button {
+	font-family: 'PT Sans', sans-serif !important;
+}
+
 .panel-dark {
 	background: rgba(219, 65, 86, 1.0);
 }

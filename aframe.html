@@ -51,7 +51,7 @@
 			}
 
 			.bottom {
-				bottom: 10vh;
+				bottom: 5vh;
 			}
 
 			.highlight-container {
@@ -59,6 +59,14 @@
 				background: rgba(150, 29, 18, 0.85);
 				width: 250px;
 				height: 250px;
+			}
+
+			button {
+				margin-bottom: 20px;
+			}
+
+			.scarlet {
+				color: #CB2B1D;
 			}
 
 			/* #DB4156 */
@@ -94,8 +102,10 @@
 					<a-asset-item id="obj-crown" src="./public/obj/c2.obj"></a-asset-item>
 				</a-assets>
 				<a-entity light="type: ambient; color: #CB2B1D"></a-entity>
-				<a-entity position="60 5 45" camera universal-controls></a-entity>
-				<a-entity obj-model="obj: #obj-crown; mtl: #mtl-crown;" position="0 -10 0" scale="1 1 1"></a-entity> <!-- mtl: #mtl-crown; -->
+				<a-entity position="61 10 80" camera universal-controls>
+					<a-animation attribute="position" dur="5000" easing="linear" to="61 5 30"></a-animation>
+				</a-entity>
+				<a-entity obj-model="obj: #obj-crown; mtl: #mtl-crown;" position="0 -10 0" scale="0.01 0.01 0.01"></a-entity> <!-- mtl: #mtl-crown; -->
 				<a-plane position="0 0 0" rotation="-90 0 0" width="400" height="400" color="#454545"></a-plane>
 				<a-sky color="#CB2B1D"></a-sky>
 			</a-scene>
@@ -111,8 +121,11 @@
 		<div class="body-cover bottom">
 			<section class="section">
 				<div class="container has-text-centered">
-					<p class="subtitle is-5 inverted">November 11<sup>th</sup>-12<sup>th</sup></p>
-					<button class="button is-primary is-outlined is-inverted is-large">Apply</button>
+					<div class="content">
+						<p class="subtitle is-5 inverted">November 11<sup>th</sup>-12<sup>th</sup></p>
+						<a href="./apply.html" class="button is-primary is-outlined is-inverted is-large">Click Here to Apply</a>
+						<p class="subtitle is-5 inverted">or hold W for 3 secs</p>
+					</div>
 				</div>
 			</section>
 		</div>
@@ -136,6 +149,21 @@
 					}, 500);
 				}, ((offset[1] - offset[0]) * Math.random()) + offset[0]);
 			}
+
+			var timeHeld = Infinity;
+
+			window.addEventListener('keypress', function(e) {
+				var key = e.keyCode || e.which;
+				if (key === 119) {
+					var now = Date.now();
+					if (now < timeHeld) {
+						timeHeld = now;
+					}
+					if ((now - timeHeld) >= 3000) {
+						window.location = './apply.html';
+					}
+				}
+			});
 
 
 		</script>
