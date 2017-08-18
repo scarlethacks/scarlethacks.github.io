@@ -40,6 +40,10 @@ input:focus {
 
 /* LANDING PAGE */
 
+.section {
+	padding: 10vh 7.5vh;
+}
+
 .scene-container {
 	height: 100vh;
 	background: url('../img/crown-splash.jpg') no-repeat center center fixed; 
@@ -76,7 +80,7 @@ input:focus {
 }
 
 .button {
-	margin-bottom: 25px;
+	margin: 0 10px 25px 10px;
 }
 
 .scarlet {

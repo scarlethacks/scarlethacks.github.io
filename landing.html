@@ -11,19 +11,16 @@
 
 		<meta property="og:title" content="ScarletHacks">
 		<meta property="og:description" content="The Illinois Institute of Technology's Premier Intercollegiate Hackathon.">
-		<!--<meta property="og:image" content="...">-->
+		<meta property="og:image" content="./public/img/crown-tile.jpg">
 		<!--<meta property="fb:app_id" content="...">-->
 
 		<link rel="icon" sizes="192x192" href="./public/img/logo.png">
-		<!--<link rel="image_src" href="...">-->
+		<link rel="image_src" href="./public/img/crown-tile.jpg">
 		<!--<link rel="manifest" href="./manifest.webapp">-->
 
-		<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+		<script type="text/javascript" src="./src/js/aframe-0.6.1.min.js"></script>
 		<script type="text/javascript" src="./src/js/aframe-effects.min.js"></script>
-
-		<script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
-		<script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
-		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.4/dist/aframe-extras.min.js"></script>
+		<script type="text/javascript" src="./src/js/aframe-extras.min.js"></script>
 
 		<script type="text/javascript" src="./public/vex/vex.combined.min.js"></script>
 		<script type="text/javascript">vex.defaultOptions.className = 'vex-theme-plain';</script>
@@ -52,6 +49,7 @@
 					<div class="container has-text-centered">
 						<div class="content">
 							<a href="./apply.html" class="button is-primary is-outlined is-inverted is-large">Apply</a>
+							<a href="#faq" class="button is-primary is-outlined is-large">FAQ</a>
 							<p id="subtitle" class="subtitle is-5 inverted">Click the building to explore.</p>
 						</div>
 					</div>
@@ -67,22 +65,24 @@
 		<section class="section panel-dark is-fullheight">
 			<div class="container has-text-centered">
 				<h1 class="title is-3">Frequently Asked Questions</h1>
+				<a name="faq"></a>
 				<br>
 			</div>
-			<div class="columns is-multiline">
-				<div class="column is-6">
-					<h1 class="title is-4">What is a Hackathon?</h1>
-					<p class="subtitle is-6">A hackathon is like an "invention marathon." Participants team up with other students and create something new in 36 hours! There will be free food, lots of bright students, and companies from around the midwest to help you learn more about technology and have a great time.</p>
+			<div class="container">
+				<div class="columns is-multiline">
+					<div class="column is-6">
+						<h1 class="title is-4">What is a Hackathon?</h1>
+						<p class="subtitle is-6">A hackathon is like an "invention marathon." Participants team up with other students and create something new in 36 hours! There will be free food, lots of bright students, and companies from around the midwest to help you learn more about technology and have a great time.</p>
+					</div>
+					<div class="column is-6">
+						<h1 class="title is-4">Can I participate?</h1>
+						<p class="subtitle is-6">Any university students (not just CS/EE/IT) above the age of 18 can attend ScarletHacks. Encourage your friends and classmates to <a href="./apply.html" class="link inverted">apply</a>!</p>
+					</div>
+					<div class="column is-6">
+						<h1 class="title is-4">Have more Questions?</h1>
+						<p class="subtitle is-5">Contact: <a href="mailto:team@scarlethacks.com" class="link inverted">team@scarlethacks.com</a></p>
+					</div>
 				</div>
-				<div class="column is-6">
-					<h1 class="title is-4">Can I participate?</h1>
-					<p class="subtitle is-6">Any university students (not just CS/EE/IT) above the age of 18 can attend ScarletHacks. Encourage your friends and classmates to <a href="./apply.html" class="link inverted">apply</a>!</p>
-				</div>
-			</div>
-			<div class="container has-text-centered">
-				<h1 class="title is-4">More Questions?</h1>
-					<p class="subtitle is-5">Contact: <a href="mailto:team@scarlethacks.com" class="link inverted">team@scarlethacks.com</a></p>
-				<br>
 			</div>
 		</section>
 		<a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:3%;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2018/events?utm_source=na-2018&utm_medium=TrustBadge&utm_campaign=na-2018&utm_content=black" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2018/black.svg" alt="Major League Hacking 2017 Hackathon Season" style="width:100%"></a>
