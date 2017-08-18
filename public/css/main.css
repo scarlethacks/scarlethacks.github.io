@@ -1,8 +1,8 @@
 html {
-	background: rgba(245, 245, 245, 1.0);
+	background: #CA3739;
 }
 
-.title {
+.title, h1.is-1, h1.is-2, h1.is-3, h1.is-4 {
 	font-family: 'Nunito Sans', sans-serif !important;
 }
 
@@ -11,7 +11,7 @@ p, button {
 }
 
 .panel-dark {
-	background: rgba(219, 65, 86, 1.0);
+	background: #CA3739;
 }
 
 .panel-light {
@@ -26,10 +26,67 @@ p, button {
 	color: white !important;
 }
 
+.link.inverted {
+	font-weight: bold;
+}
+
 .vex.vex-theme-plain .vex-dialog-button.vex-dialog-button-primary {
-	background: rgba(219, 65, 86, 1.0);
+	background: #CA3739;
 }
 
 input:focus {
 	border-color: rgba(200, 200, 200, 1.0) !important;
 }
+
+/* LANDING PAGE */
+
+.scene-container {
+	height: 100vh;
+	background: url('../img/crown-splash.jpg') no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#scene-source {
+	width: 100%;
+	height: 100%;
+}
+
+.body-cover {
+	position: absolute;
+	z-index: 100;
+	width: 100%;
+}
+
+.top {
+	top: 10vh;
+}
+
+.bottom {
+	bottom: 5vh;
+}
+
+.highlight-container {
+	margin: 150px auto;
+	background: rgba(150, 29, 18, 0.85);
+	width: 250px;
+	height: 250px;
+}
+
+.button {
+	margin-bottom: 25px;
+}
+
+.scarlet {
+	color: #CB2B1D;
+}
+
+.subtitle {
+	margin-bottom: 0 !important;
+}
+
+/* #DB4156 */
+/* #CB2B1D */
+/* #CA3739 */
