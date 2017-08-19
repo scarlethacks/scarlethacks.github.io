@@ -12,7 +12,7 @@ function setColor(c) {
 }*/
 
 function glitch(aScene, on) {
-	on = false;
+	//on = false;
 	aScene.setAttribute('glitch', on);
 }
 
@@ -31,35 +31,29 @@ var html = `<a-scene style="display: none;" id="scene" antialias="false" effects
 		<a-asset-item id="mtl-crown" src="./public/obj/crown/model.obj.mtl"></a-asset-item>
 		<a-asset-item id="obj-crown" src="./public/obj/crown/model.obj"></a-asset-item>
 	</a-assets>
-	<a-light id="light" type="ambient" color="#FC4120"></a-entity>-->
-	<a-entity id="sun" position="0 3 35" rotation="0 0 0" camera universal-controls>
-		<a-animation attribute="position" dur="3000" easing="linear" to="0 12 50"></a-animation>
+	<a-light id="light" type="ambient" color="#FC4120"></a-entity>
+	<a-entity id="sun" position="0 0 35" rotation="0 0 0" camera look-controls wasd-controls>
+		<a-entity cursor="fuse: true; fuseTimeout: 500"
+			position="0 0 -1"
+			geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+			material="color: black; shader: flat"
+			visible="false">
+		</a-entity>
+		<a-animation attribute="position" dur="3000" easing="linear" to="0 10 50"></a-animation>
 		<a-animation attribute="rotation" dur="3000" easing="linear" to="-10 0 0"></a-animation>
 	</a-entity>
-		<a-entity obj-model="obj: #obj-crown; mtl: #mtl-crown;" position="0 5 0" scale="1 1 1"></a-entity>
-	<a-plane position="0 -10 0" rotation="-90 0 0" width="400" height="400" color="#444444"></a-plane>
+		<a-box position="0 0 0" width="2" height="2" depth="2">
+			<a-entity obj-model="obj: #obj-crown; mtl: #mtl-crown;" position="0 5 0" scale="1 1 1"></a-entity>
+			<a-cylinder position="0 -2 0" rotation="0 0 0" radius="45" height="1" color="#444444"></a-cylinder>
+			<a-animation attribute="rotation" dur="30000" easing="linear" to="0 360 0" repeat="indefinite"></a-animation>
+		</a-box>
 	<a-sky id="sky" color="#FC4120"></a-sky>
 </a-scene>'`;
 
 var sceneSource = document.getElementById('scene-source');
 var subtitle = document.getElementById('subtitle');
-
-isMobile = false;
-
-if (isMobile) {
 	
-	subtitle.innerText = '';
-	/*subtitle.innerText = 'Click here to explore the building.';
-	subtitle.addEventListener('click', function(e) {
-		subtitle.innerText = 'Entered Exploration Mode.';
-		scene.style.display = 'block';
-	});*/
-
-} else {
-	
-	main();
-
-}
+main();
 
 function main() {
 
@@ -67,23 +61,21 @@ function main() {
 	console.log('started branch');
 
 	sceneSource.innerHTML = html;
-
 	var scene = document.getElementById('scene');
 
 	scene.addEventListener('loaded', function() {
-		if (!isMobile) {
-			scene.style.display = 'block';
-
-			let dur = Date.now() - start;
-			console.log(`completed in ${dur}ms`);
-
-			runGlitch(scene, [3000, 7000]);
-		}
+		scene.style.display = 'block';
+		let dur = Date.now() - start;
+		console.log(`completed in ${dur}ms`);
+		runGlitch(scene, [3000, 7000]);
 	});
 
-	scene.addEventListener('click', function(e) {
-		subtitle.innerText = 'Use arrow keys to move and cursor to look. To visit the application, hold G.';
-	});
+	if (isMobile) {
+		subtitle.innerText = 'Tap the viewer button to view in VR.';
+	} else {
+		subtitle.innerText = 'Use WASD to move and drag the model to look. To visit the application, hold G.';
+	}
+
 
 	var timeHeld = Infinity;
 
@@ -97,6 +89,8 @@ function main() {
 			if ((now - timeHeld) >= 1000) {
 				window.location = './apply.html';
 			}
+		} else {
+			timeHeld = Infinity;
 		}
 	});
 

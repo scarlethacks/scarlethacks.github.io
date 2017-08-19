@@ -72,6 +72,7 @@ input:focus {
 
 .top {
 	top: 10vh;
+	pointer-events: none;
 }
 
 .bottom {
@@ -100,3 +101,13 @@ input:focus {
 /* #DB4156 */
 /* #CB2B1D */
 /* #CA3739 */
+
+/*::moz-selection {
+	color: white !important;
+	background: #CA3739 !important;
+}
+
+::selection {
+	color: white !important;
+	background: #CA3739 !important;
+}*/
