@@ -12,6 +12,7 @@ function setColor(c) {
 }*/
 
 function glitch(aScene, on) {
+	on = false;
 	aScene.setAttribute('glitch', on);
 }
 
@@ -27,21 +28,23 @@ function runGlitch(aScene, offset) {
 
 var html = `<a-scene style="display: none;" id="scene" antialias="false" effects=" colors, outline.sobel?, bloom, film,  godrays, glitch,  fxaa" film="sIntensity: 0.03; nIntensity: 0.2"  outline="enabled: false; width: 1.33 1.33; range: 0 10; strength: 3; smooth: true;"  colors="mode:hqprtom; mul: 0.66 0.5 0.66; pow: 1 1.33 1.66; quant: 0.3 0.3 0.1; orig: 0.33 0.66 0.66" bloom="filter: bloom!, bloom.filter, #customFilter(bloom_texture 0.3 0.6 0.5); strength: 0.5; radius:1.2" fxaa="true" godrays="src: #sun; threshold: 0. 0.33; intensity: 2" glitch="true" embedded="true">
 	<a-assets>
-		<a-asset-item id="mtl-crown" src="./public/obj/c3.mtl"></a-asset-item>
-		<a-asset-item id="obj-crown" src="./public/obj/CrownHall1.obj"></a-asset-item>
+		<a-asset-item id="mtl-crown" src="./public/obj/remodel/Crown.mtl"></a-asset-item>
+		<a-asset-item id="obj-crown" src="./public/obj/remodel/Crown.obj"></a-asset-item>
 	</a-assets>
 	<a-light id="light" type="ambient" color="#FC4120"></a-entity>-->
 	<a-entity id="sun" position="0 3 35" rotation="0 0 0" camera universal-controls>
-		<a-animation attribute="position" dur="5000" easing="linear" to="0 12 50"></a-animation>
-		<a-animation attribute="rotation" dur="5000" easing="linear" to="-10 0 0"></a-animation>
+		<a-animation attribute="position" dur="3000" easing="linear" to="0 12 50"></a-animation>
+		<a-animation attribute="rotation" dur="3000" easing="linear" to="-10 0 0"></a-animation>
 	</a-entity>
-	<a-entity obj-model="obj: #obj-crown; mtl: #mtl-crown;" position="0 5 0" scale="0.01 0.01 0.01"></a-entity>
+		<a-entity obj-model="obj: #obj-crown; mtl: #mtl-crown;" position="0 5 0" scale="0.01 0.01 0.01"></a-entity>
 	<a-plane position="0 -10 0" rotation="-90 0 0" width="400" height="400" color="#444444"></a-plane>
 	<a-sky id="sky" color="#FC4120"></a-sky>
 </a-scene>'`;
 
 var sceneSource = document.getElementById('scene-source');
 var subtitle = document.getElementById('subtitle');
+
+isMobile = false;
 
 if (isMobile) {
 	
@@ -54,6 +57,15 @@ if (isMobile) {
 
 } else {
 	
+	main();
+
+}
+
+function main() {
+
+	let start = Date.now();
+	console.log('started branch');
+
 	sceneSource.innerHTML = html;
 
 	var scene = document.getElementById('scene');
@@ -61,6 +73,10 @@ if (isMobile) {
 	scene.addEventListener('loaded', function() {
 		if (!isMobile) {
 			scene.style.display = 'block';
+
+			let dur = Date.now() - start;
+			console.log(`completed in ${dur}ms`);
+
 			runGlitch(scene, [3000, 7000]);
 		}
 	});
