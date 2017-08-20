@@ -111,3 +111,7 @@ input:focus {
 	color: white !important;
 	background: #CA3739 !important;
 }*/
+
+.loader {
+	display: inline-block !important;
+}

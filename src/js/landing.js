@@ -58,7 +58,6 @@ main();
 function main() {
 
 	let start = Date.now();
-	console.log('started branch');
 
 	sceneSource.innerHTML = html;
 	var scene = document.getElementById('scene');
@@ -66,7 +65,7 @@ function main() {
 	scene.addEventListener('loaded', function() {
 		scene.style.display = 'block';
 		let dur = Date.now() - start;
-		console.log(`completed in ${dur}ms`);
+		//console.log(`completed in ${dur}ms`);
 		runGlitch(scene, [3000, 7000]);
 	});
 
