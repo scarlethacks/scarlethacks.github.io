@@ -70,13 +70,17 @@ input:focus {
 	width: 100%;
 }
 
+.body-cover .section {
+	padding: 0 10px !important;
+}
+
 .top {
-	top: 10vh;
+	top: 100px;
 	pointer-events: none;
 }
 
 .bottom {
-	bottom: 5vh;
+	bottom: 45px;
 }
 
 .highlight-container {
