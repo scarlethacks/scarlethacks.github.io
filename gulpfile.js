@@ -13,7 +13,8 @@ let moduleimporter = require('sass-module-importer');
 gulp.task('build', function(){
 	let files = [
 		{file: 'main', src: 'src/js', dest: 'public/js'},
-		{file: 'landing', src: 'src/js', dest: 'public/js'}/*,
+		{file: 'landing', src: 'src/js', dest: 'public/js'},
+		{file: 'apply', src: 'src/js', dest: 'public/js'}/*,
 		{file: 'prometheus', src: 'node_modules/prometheusjs', dest: 'public/js'}*/
 	];
 	return merge(files.map(function(fileData){

@@ -22,23 +22,27 @@
 		<link rel="stylesheet" href="./public/css/bundle.css">
 		<link rel="stylesheet" href="./public/css/main.css">
 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 	</head>
 	<body>
-	<div class="hero panel-dark is-fullheight">
-		<div class="hero-body">
-			<div class="container has-text-centered">
-				<h1 class="title is-1">Scarlet<wbr>Hacks</h1>
-				<p class="subtitle is-5">Redirecting you to the application page...</p>
-				<br>
-				<a href="https://docs.google.com/forms/d/e/1FAIpQLSf9TdDeKUVQ_mQtjfJM3fgEwt62luhGCsvRoiebx427F9ZO2Q/viewform?usp=sf_link" class="button is-primary is-outlined is-inverted">Go to Application</a>
-			</div>
+		<div class="panel-dark is-fullheight">
+			<section class="section">
+				<div class="container has-text-centered">
+					<h1 class="title is-2">Apply to <wbr>Scarlet<wbr>Hacks</h1>
+					<p class="subtitle is-5">Choose Your School</p>
+					<br>
+					<div class="control has-text-centered">
+						<div class="select">
+							<select id="select-school" class="limited-selector"></select>
+						</div>
+					</div>
+					<br>
+					<a id="button-form" class="button is-primary is-outlined is-inverted" disabled="true">Go to Application</a>
+				</div>
+			</section>
+			<a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:3%;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2018/events?utm_source=na-2018&utm_medium=TrustBadge&utm_campaign=na-2018&utm_content=black" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2018/black.svg" alt="Major League Hacking 2017 Hackathon Season" style="width:100%"></a>
 		</div>
-	</div>
-	<a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:3%;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2018/events?utm_source=na-2018&utm_medium=TrustBadge&utm_campaign=na-2018&utm_content=black" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2018/black.svg" alt="Major League Hacking 2017 Hackathon Season" style="width:100%"></a>
-	<script type="text/javascript">
-		
-		window.location = 'https://docs.google.com/forms/d/e/1FAIpQLSf9TdDeKUVQ_mQtjfJM3fgEwt62luhGCsvRoiebx427F9ZO2Q/viewform?usp=sf_link';
-
-	</script>
+		<script type="text/javascript" src="./public/js/apply.js"></script>
 	</body>
 </html>

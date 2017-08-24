@@ -119,3 +119,8 @@ input:focus {
 .loader {
 	display: inline-block !important;
 }
+
+.limited-selector {
+	max-width: 80vw !important;
+	overflow-x: hidden !important;
+}
