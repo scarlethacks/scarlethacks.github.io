@@ -34,6 +34,10 @@ p, button {
 	font-weight: bold;
 }
 
+.is-bold {
+	font-weight: bold;
+}
+
 .vex.vex-theme-plain .vex-dialog-button.vex-dialog-button-primary {
 	background: #CA3739;
 }
