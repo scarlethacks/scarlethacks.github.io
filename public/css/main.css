@@ -128,3 +128,34 @@ input:focus {
 	max-width: 80vw !important;
 	overflow-x: hidden !important;
 }
+
+.sponsor-container {
+	margin-bottom: 20px;
+}
+
+.is-sponsor-wide {
+	/*width: 120px;*/
+	height: 60px;
+	display: inline-block !important;
+	vertical-align: middle;
+	/*border: 1px solid red;*/
+	margin: 20px;
+}
+
+.is-sponsor-wide img {
+	width: auto;
+	max-height: 100%;
+	vertical-align: middle;
+	/*max-height: 25px;
+	max-width: 160px;*/
+}
+
+.is-sponsor-wide .logo-helper {
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	display: none;
+}
+
+
+
