@@ -30,12 +30,24 @@ p, span, button {
 	color: white !important;
 }
 
+.darkened {
+	color: #190807 !important;
+}
+
+.is-transparent {
+	background: transparent !important;
+}
+
+.has-no-border {
+	border: none !important;
+}
+
 .link.inverted {
 	font-weight: bold;
 }
 
 .is-bold {
-	font-weight: bold;
+	font-weight: bold !important;
 }
 
 .vex.vex-theme-plain .vex-dialog-button.vex-dialog-button-primary {
@@ -140,6 +152,11 @@ input:focus {
 	vertical-align: middle;
 	/*border: 1px solid red;*/
 	margin: 20px;
+}
+
+.is-sponsor-wide:hover {
+	cursor: pointer;
+	-webkit-filter: invert(100%);
 }
 
 .is-sponsor-wide img {
