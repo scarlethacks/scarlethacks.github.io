@@ -6,7 +6,7 @@ html {
 	font-family: 'Nunito Sans', sans-serif !important;
 }
 
-p, button {
+p, span, button {
 	font-family: 'PT Sans', sans-serif !important;
 }
 
@@ -157,5 +157,7 @@ input:focus {
 	display: none;
 }
 
-
+.schedule .column {
+	padding: 5px 10px !important;
+}
 
