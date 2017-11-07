@@ -57,21 +57,26 @@ main();
 
 function main() {
 
-	let start = Date.now();
-
-	sceneSource.innerHTML = html;
-	var scene = document.getElementById('scene');
-
-	scene.addEventListener('loaded', function() {
-		scene.style.display = 'block';
-		let dur = Date.now() - start;
-		//console.log(`completed in ${dur}ms`);
-		runGlitch(scene, [3000, 7000]);
-	});
-
 	if (isMobile) {
-		subtitle.innerText = 'Tap the viewer button to view in VR.';
+		
+		//subtitle.innerText = 'Tap the viewer button to view in VR.';
+		sceneSource.classList.add('static-crown-hall-background');
+		sceneSource.innerHTML = ``;
+
 	} else {
+
+		let start = Date.now();
+
+		sceneSource.innerHTML = html;
+		var scene = document.getElementById('scene');
+
+		scene.addEventListener('loaded', function() {
+			scene.style.display = 'block';
+			let dur = Date.now() - start;
+			//console.log(`completed in ${dur}ms`);
+			runGlitch(scene, [3000, 7000]);
+		});
+
 		subtitle.innerText = 'Use WASD to move and drag the model to look. To visit the application, hold G.';
 	}
 
