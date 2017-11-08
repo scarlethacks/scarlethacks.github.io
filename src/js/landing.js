@@ -84,41 +84,6 @@ function main() {
 		}
 	});
 
-	let list = document.querySelector('.sponsor-container');
-	let answer = Array.from(list.children).map((li) => {
-		return li.dataset.sponsor || false;
-	}).sort((a, b) => {
-		return a.localeCompare(b);
-	});
-	Sortable.create(list, {
-		forceFallback: true,
-		scroll: false,
-		onStart: (e) => {
-			e.item.style.display = 'none';
-		},
-		onEnd: (e) => {
-			e.item.style.display = 'inline-block';
-			let sponsors = Array.from(list.children).map((li) => {
-				return li.dataset.sponsor || false;
-			});
-			let solved = true;
-			for (let i = 0; i < sponsors.length; i++) {
-				if (sponsors[i] !== answer[i]) {
-					solved = false;
-					break;
-				}
-			}
-			if (solved) {
-				let code = ` %^87Y`;
-				let msg = `<p class="subtitle is-5">You solved one of our puzzles! Remember this secret code: <span class="is-bold darkened">${code}</span></p>`;
-				list.innerHTML = `<a class="button is-outlined is-inverted is-transparent has-no-border is-loading">${code}</a>`
-				setTimeout(() => {
-					list.innerHTML = msg;
-				}, 1500);
-			}
-		}
-	});
-
 }
 
 function initScene() {
