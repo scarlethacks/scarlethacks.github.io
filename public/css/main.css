@@ -193,7 +193,7 @@ input:focus {
 	padding: 5px 10px !important;
 }
 
-.pulse-logo {
+.pulse-logo, .still-logo {
 	height: 200px;
 	line-height: 200px;
 	margin: 20px;
@@ -203,6 +203,11 @@ input:focus {
 .pulse-logo img {
 	animation: pulse 2s infinite ease-in-out;
 	vertical-align: middle;
+}
+
+.still-logo img {
+	width: 200px;
+	height: 200px;
 }
 
 @keyframes pulse {
